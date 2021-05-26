@@ -8,7 +8,7 @@ function GetTodos() {
     useEffect(() => {
         getTodos();
         console.log(todos);
-     }, []);
+     });
 
       const getTodos =()=>{
         db.collection("todos").onSnapshot( function(querySnapshot){

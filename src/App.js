@@ -39,6 +39,7 @@ function App() {
           case "auth/wrong-password":
             setPasswordError(err.message);
             break;
+            default:  console.log(`Sorry, we are out of service`);
         }
       })
       .then((e) => console.log(e));
@@ -51,8 +52,6 @@ function App() {
     firebaseAuth
     .createUserWithEmailAndPassword(email, password)
     .catch((err) => {
-      console.log(err.code);
-      console.log(err.message);
       switch(err.code){
         case "auth/email-already-in-use":
         case "auth/invalid-email":
@@ -61,6 +60,7 @@ function App() {
         case "auth/weak-password":
           setPasswordError(err.message);
           break;
+          default:  console.log(`Sorry, we are out of service`);
       }
     });
   }
@@ -82,7 +82,7 @@ function App() {
 
   useEffect(() => {
     authListener();
-  },[]);
+  });
 
   return (
     <div>
